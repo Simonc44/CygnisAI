@@ -7,7 +7,7 @@ import { getFirestore } from 'firebase/firestore';
 // Your web app's Firebase configuration is now hardcoded for reliability
 // This is public and safe.
 export const firebaseConfig: FirebaseOptions = {
-  apiKey: "AIzaSyDoiAht75pOjjSAFVfPXq0l0J8pshSpJko",
+  apiKey: "AIzaSy......",
   authDomain: "cygnis-91egx.firebaseapp.com",
   projectId: "cygnis-91egx",
   storageBucket: "cygnis-91egx.appspot.com",
