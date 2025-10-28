@@ -1,0 +1,9 @@
+
+{
+  "hosting": {
+    "source": "dist",
+    "frameworksBackend": {
+      "region": "us-central1"
+    }
+  }
+}
