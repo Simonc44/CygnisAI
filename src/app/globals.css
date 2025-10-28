@@ -1,0 +1,328 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    
+    --sidebar-background: 230 20% 96%;
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 230 15% 90%;
+    --sidebar-accent-foreground: 222.2 84% 4.9%;
+    --sidebar-border: 230 15% 88%;
+    --sidebar-ring: 217 91% 60%;
+    
+    --gradient-start: hsl(220, 60%, 55%);
+    --gradient-end: hsl(260, 60%, 55%);
+  }
+
+  .dark {
+    --background: 228 10% 4%;
+    --foreground: 210 20% 98%;
+
+    --card: 228 10% 6%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 228 10% 4%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 228 10% 12%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 228 10% 12%;
+    --input: 228 10% 12%;
+    --ring: 217.2 91.2% 59.8%;
+    
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    
+    --sidebar-background: 230 20% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 230 15% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 230 15% 12%;
+    --sidebar-ring: 217 91% 60%;
+
+    --gradient-start: hsl(220, 60%, 25%);
+    --gradient-end: hsl(260, 60%, 25%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glow-on-hover {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .glow-on-hover:hover, .glow-on-hover:focus {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.6), 0 0 8px hsl(var(--primary) / 0.4);
+  }
+
+  .gradient-border-card {
+    position: relative;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+    background-color: hsl(var(--card));
+    z-index: 1;
+  }
+  .gradient-border-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    margin: -1px; /* The width of the border */
+    border-radius: inherit; /* follow parent */
+    background: linear-gradient(145deg, hsl(var(--primary) / 0.7), hsl(280 65% 60% / 0.7), hsl(var(--primary) / 0.7));
+    background-size: 300% 300%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    animation: gradient-pan 8s linear infinite;
+  }
+  .gradient-border-card:hover::before {
+    opacity: 1;
+  }
+
+  .page-transition {
+    animation: fade-in-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  .card-hover-effect {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .card-hover-effect:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+  }
+
+  .marquee {
+    animation: marquee 60s linear infinite;
+  }
+
+  .marquee-container:hover .marquee {
+    animation-play-state: paused;
+  }
+
+  .placeholder-transparent::placeholder {
+    color: transparent;
+  }
+  
+  .animate-scale-in-pop {
+    display: inline-block; /* Required for transform */
+    opacity: 0;
+    transform: scale(1.5);
+    animation: scale-in-pop 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+}
+
+
+body {
+  background-color: hsl(var(--background));
+  position: relative;
+}
+
+body::before, body::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 250vw;
+    height: 250vw;
+    background-size: 250% 250%;
+    background-image: 
+        radial-gradient(circle at 15% 50%, hsl(var(--primary) / 0.1), transparent 30%),
+        radial-gradient(circle at 85% 30%, hsl(280 65% 60% / 0.1), transparent 35%),
+        radial-gradient(circle at 50% 80%, hsl(var(--primary) / 0.05), transparent 40%);
+    animation: background-pan 45s linear infinite;
+    z-index: -2;
+}
+
+body::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+body::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+    animation-direction: reverse;
+}
+
+@keyframes float-shard {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate3d(1, 1, 1, 0deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate3d(20px, -30px, 50px) rotate3d(0.5, 1, 0.8, 180deg);
+        opacity: 1;
+    }
+}
+
+.shard-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.shard {
+    position: absolute;
+    list-style: none;
+    background: linear-gradient(135deg, hsla(var(--primary), 0.2), transparent 70%);
+    border: 1px solid hsla(var(--primary), 0.3);
+    border-radius: 1rem;
+    backdrop-filter: blur(5px);
+    animation: float-shard 20s infinite ease-in-out;
+}
+
+.shard:nth-child(1) { top: 10%; left: 15%; width: 200px; height: 200px; animation-duration: 25s; animation-delay: -5s; }
+.shard:nth-child(2) { top: 70%; left: 20%; width: 150px; height: 150px; animation-duration: 30s; animation-delay: -2s; }
+.shard:nth-child(3) { top: 20%; left: 80%; width: 100px; height: 100px; animation-duration: 18s; }
+.shard:nth-child(4) { top: 80%; left: 75%; width: 250px; height: 250px; animation-duration: 22s; animation-delay: -10s; }
+.shard:nth-child(5) { top: 40%; left: 50%; width: 120px; height: 120px; animation-duration: 28s; animation-delay: -8s; }
+.shard:nth-child(6) { top: 50%; left: 85%; width: 80px; height: 80px; animation-duration: 35s; animation-delay: -15s; }
+.shard:nth-child(7) { top: 90%; left: 5%; width: 180px; height: 180px; animation-duration: 26s; animation-delay: -3s; }
+.shard:nth-child(8) { top: 5%; left: 40%; width: 90px; height: 90px; animation-duration: 19s; animation-delay: -1s; }
+
+
+.typing-indicator span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: hsl(var(--primary));
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 100% {
+        transform: scale(0.8);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+@keyframes background-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradient-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Page Transition Animations */
+@keyframes button-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 15px hsl(var(--primary) / 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0);
+  }
+}
+
+@keyframes scale-in-pop {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+    
