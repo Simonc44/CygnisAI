@@ -1,6 +1,7 @@
 
 # CygnisAI - L'IA qui vous ressemble
 
+![All Rights Reserved](https://img.shields.io/badge/license-All%20Rights%20Reserved-red)
 
 **CygnisAI** est une plateforme d'intelligence artificielle innovante conçue pour connecter vos données et libérer leur potentiel. Discutez, créez et explorez avec une suite d'outils IA conçus pour la performance et la personnalisation.
 
