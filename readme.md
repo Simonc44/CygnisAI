@@ -29,20 +29,6 @@ CygnisAI est construit avec des technologies modernes et performantes pour offri
 
 ---
 
-### 🚀 Démarrage Rapide
+## License
 
-Ce projet est conçu pour être exécuté dans un environnement de développement cloud.
-
-1.  **Installation des dépendances** :
-    ```bash
-    npm install
-    ```
-2.  **Lancement du serveur de développement** :
-    ```bash
-    npm run dev
-    ```
-3.  Ouvrez votre navigateur et accédez à l'URL fournie par l'environnement de développement.
-
----
-
-> "La meilleure façon de prédire l'avenir, c'est de le créer."
+© 2025 Simon Chusseau. Tous droits réservés.
