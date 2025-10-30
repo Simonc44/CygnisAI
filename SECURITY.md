@@ -1,41 +1,76 @@
-# Security Policy 
+# Security Policy for Cygnis AI
 
 ## Supported Versions
 
-This section outlines which versions of Cygnis AI are currently supported with security updates.
+This project is primarily maintained on the `main` branch. We currently do **not** publish stable versioned releases. Security updates are applied to the `main` branch.
 
-| Version | Supported          |
-| ------- | ----------------- |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:               |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:               |
+| Branch / Tag        | Supported            |
+|----------------------|---------------------|
+| main                 | :white_check_mark:  |
+| Tagged releases (if any) | :x:            |
+| Archived versions    | :x:                 |
 
-**Note:** Only supported versions will receive security patches and updates. Users on unsupported versions are encouraged to upgrade to a supported version as soon as possible.
+> If we begin to publish tagged versions (e.g. v1.0.0), this table will be updated accordingly.
+
+---
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in Cygnis AI, please report it responsibly.  
+We take security seriously. Please report responsibly.
 
-### How to Report
+**Preferred methods:**
 
-1. Email our security team at: **security@cygnis.ai**  
-2. Include the following information in your report:
-   - Description of the vulnerability
-   - Steps to reproduce
-   - Impact assessment (if known)
-   - Any relevant logs or screenshots  
+- **GitHub Security Advisory (private)** — for private reporting.  
+- **Email:** `security@cygnis.ai` — use this if you cannot open a GitHub advisory.
 
-### Response Process
+**What to include:**
 
-- We will acknowledge your report within **48 hours**.  
-- Our security team will assess the issue and provide updates on the status of the fix.  
-- If the vulnerability is confirmed, we will provide a patch or mitigation steps as soon as possible.  
-- If the vulnerability is invalid or cannot be reproduced, we will notify you with the reasoning.  
+- Affected commit SHA / branch  
+- Detailed steps to reproduce  
+- Proof of concept or minimal exploit (if safe)  
+- Impact assessment  
+- Your preferred disclosure timeline (e.g. embargo period)  
 
-### Disclosure Policy
+**Do not publish public issues with exploit code.**
 
-- We ask that you **do not publicly disclose** the vulnerability until a fix has been released.  
-- Coordinated disclosure allows us to protect all users of Cygnis AI.  
+---
 
-Thank you for helping us keep Cygnis AI safe and secure.
+## Handling Reports and Fixes
+
+1. **Acknowledgement** — within 3 business days  
+2. **Initial assessment** — within 7 calendar days  
+3. **Fix & Coordination** — if confirmed, we will:
+   - Create a patch or mitigation
+   - Coordinate disclosure timeline (default 30-day embargo)
+   - Publish advisory and request CVE if applicable  
+
+If no response occurs in these timelines, feel free to follow up.
+
+---
+
+## Scope
+
+**In-scope:**
+
+- Code and configuration files in this repository: e.g. `src/`, `next.config.js`, `firebase.json`, `.env.example`  
+- API endpoints, database queries, authentication logic  
+- Frontend/backend integration, if present
+
+**Out-of-scope:**
+
+- Third-party dependencies (report them upstream)  
+- Misconfigurations external to this repo  
+
+---
+
+## Best Practices & Mitigations
+
+- Maintain a `.env.example` without secrets, but with all required variable names.  
+- Store real secrets in environment variables (Vercel, Firebase, etc.), not in code.  
+- Rotate API keys or credentials upon any suspected leak.  
+- Use signed commits and branch protection.  
+- Enable dependency scanning (Dependabot) and require security updates.  
+
+---
+
+_Last updated: 2025-10-30_
